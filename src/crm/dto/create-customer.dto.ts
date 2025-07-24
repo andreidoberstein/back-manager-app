@@ -1,16 +1,17 @@
+import { InputType, Field } from '@nestjs/graphql';
 import { IsString, IsEmail, IsOptional } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
 
+@InputType()
 export class CreateCustomerDto {
-  @ApiProperty()
+  @Field()
   @IsString()
   name: string;
 
-  @ApiProperty()
+  @Field()
   @IsEmail()
   email: string;
 
-  @ApiProperty({ required: false })
+  @Field({ nullable: true })
   @IsOptional()
   @IsString()
   phone?: string;
