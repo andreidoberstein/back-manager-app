@@ -39,6 +39,8 @@ model Customer {
   phone     String?
   userId    Int
   user      User     @relation(fields: [userId], references: [id])
+
+  transactions Transaction[]
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -50,8 +52,11 @@ model Transaction {
   id          Int      @id @default(autoincrement())
   amount      Float
   description String
+  category    String?
   userId      Int
   user        User     @relation(fields: [userId], references: [id])
+  customerId  Int
+  customer    Customer @relation(fields: [customerId], references: [id])
   
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -69,3 +74,4 @@ model Report {
 
   @@map("resprts")
 }
+

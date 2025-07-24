@@ -7,8 +7,16 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class FinancialRepository {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: CreateTransactionDto & { userId: number }) {
-    return this.prisma.transaction.create({ data });
+  async create(dto: CreateTransactionDto & { userId: number; customerId: number }) {
+    return this.prisma.transaction.create({
+      data: {
+        amount: dto.amount,
+        description: dto.description,
+        category: dto.category,
+        user: { connect: { id: dto.userId } },
+        customer: { connect: { id: dto.customerId } },
+      },
+    });
   }
 
   async findAll(userId: number) {
