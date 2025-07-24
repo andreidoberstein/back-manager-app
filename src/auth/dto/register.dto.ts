@@ -15,4 +15,8 @@ export class RegisterDto {
   @IsOptional()
   @IsString()
   role?: string;
+
+  createdAt?: Date
+  
+  updatedAt?: Date
 }

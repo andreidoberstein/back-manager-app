@@ -1,85 +1,189 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Project setup
-
-```bash
-$ npm install
+```plaintext
+/backend-gestao-empresarial
+├── /src
+│   ├── /auth
+│   │   ├── auth.module.ts
+│   │   ├── auth.service.ts
+│   │   ├── auth.controller.ts
+│   │   ├── jwt.strategy.ts
+│   │   ├── jwt-auth.guard.ts
+│   │   ├── dto
+│   │   │   ├── login.dto.ts
+│   │   │   ├── register.dto.ts
+│   │   ├── interfaces
+│   │   │   ├── jwt-payload.interface.ts
+│   ├── /crm
+│   │   ├── crm.module.ts
+│   │   ├── crm.service.ts
+│   │   ├── crm.controller.ts
+│   │   ├── crm.repository.ts
+│   │   ├── dto
+│   │   │   ├── create-customer.dto.ts
+│   │   │   ├── update-customer.dto.ts
+│   │   ├── entities
+│   │   │   ├── customer.entity.ts
+│   ├── /financial
+│   │   ├── financial.module.ts
+│   │   ├── financial.service.ts
+│   │   ├── financial.controller.ts
+│   │   ├── financial.repository.ts
+│   │   ├── dto
+│   │   │   ├── create-transaction.dto.ts
+│   │   │   ├── update-transaction.dto.ts
+│   │   ├── entities
+│   │   │   ├── transaction.entity.ts
+│   ├── /reports
+│   │   ├── reports.module.ts
+│   │   ├── reports.service.ts
+│   │   ├── reports.controller.ts
+│   │   ├── reports.repository.ts
+│   │   ├── dto
+│   │   │   ├── generate-report.dto.ts
+│   │   ├── entities
+│   │   │   ├── report.entity.ts
+│   ├── /graphql
+│   │   ├── schemas
+│   │   │   ├── customer.schema.ts
+│   │   │   ├── transaction.schema.ts
+│   │   │   ├── report.schema.ts
+│   │   ├── resolvers
+│   │   │   ├── customer.resolver.ts
+│   │   │   ├── transaction.resolver.ts
+│   │   │   ├── report.resolver.ts
+│   ├── /config
+│   │   ├── prisma.service.ts
+│   │   ├── redis.service.ts
+│   ├── /common
+│   │   ├── decorators
+│   │   │   ├── roles.decorator.ts
+│   │   ├── guards
+│   │   │   ├── roles.guard.ts
+│   ├── app.module.ts
+│   ├── main.ts
+├── /prisma
+│   ├── schema.prisma
+├── /test
+│   ├── auth
+│   │   ├── auth.controller.spec.ts
+│   │   ├── auth.service.spec.ts
+│   ├── crm
+│   │   ├── crm.controller.spec.ts
+│   │   ├── crm.service.spec.ts
+│   ├── financial
+│   │   ├── financial.controller.spec.ts
+│   │   ├── financial.service.spec.ts
+│   ├── reports
+│   │   ├── reports.controller.spec.ts
+│   │   ├── reports.service.spec.ts
+│   ├── app.e2e-spec.ts
+├── Dockerfile
+├── docker-compose.yml
+├── .env.example
+├── package.json
+├── tsconfig.json
+├── README.md
 ```
 
-## Compile and run the project
+### README.md
+<xaiArtifact artifact_id="ed0f63be-c1ad-43d2-8761-f665aaa7649f" artifact_version_id="f0d2aac1-4511-4397-9fb4-bdb748aded59" title="README.md" contentType="text/markdown">
 
-```bash
-# development
-$ npm run start
+# Sistema de Gestão Empresarial
 
-# watch mode
-$ npm run start:dev
+Uma plataforma completa para gestão empresarial com módulos de CRM, financeiro e relatórios avançados, construída com NestJS, Next.js, PostgreSQL, GraphQL, Redis e autenticação JWT. Inclui documentação com Swagger e testes unitários/integração.
 
-# production mode
-$ npm run start:prod
-```
+## Tecnologias Utilizadas
+- **NestJS**: Framework Node.js para backend escalável.
+- **Prisma**: ORM para interação com PostgreSQL.
+- **GraphQL**: API para consultas flexíveis.
+- **Redis**: Cache para relatórios e sessões.
+- **JWT**: Autenticação baseada em tokens.
+- **Swagger**: Documentação da API REST.
+- **PostgreSQL**: Banco de dados relacional.
+- **Docker**: Containerização da aplicação.
+- **Jest**: Framework para testes unitários e de integração.
 
-## Run tests
+## Pré-requisitos
+- Docker e Docker Compose
+- Node.js v18 ou superior
+- Yarn ou npm
+- Git
 
-```bash
-# unit tests
-$ npm run test
+## Configuração do Ambiente
 
-# e2e tests
-$ npm run test:e2e
+1. **Clone o Repositório**
+   ```bash
+   git clone https://github.com/seu-usuario/sistema-gestao-empresarial.git
+   cd sistema-gestao-empresarial
+   ```
 
-# test coverage
-$ npm run test:cov
-```
+2. **Configure as Variáveis de Ambiente**
+   - Copie o arquivo `.env.example` para `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Edite o arquivo `.env` com suas credenciais:
+     ```env
+     DATABASE_URL="postgresql://user:password@localhost:5432/gestao?schema=public"
+     JWT_SECRET="sua-chave-secreta"
+     REDIS_HOST=redis
+     REDIS_PORT=6379
+     ```
 
-## Resources
+3. **Suba os Containers com Docker**
+   ```bash
+   docker-compose up -d
+   ```
 
-Check out a few resources that may come in handy when working with NestJS:
+4. **Instale as Dependências**
+   ```bash
+   npm install
+   ```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+5. **Execute as Migrações do Prisma**
+   ```bash
+   npm prisma migrate dev
+   ```
 
-## Support
+6. **Inicie a Aplicação**
+   ```bash
+   npm run start:dev
+   ```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Endpoints Disponíveis
+- **API REST**: `http://localhost:3000/api` (Swagger)
+- **GraphQL**: `http://localhost:3000/graphql` (Playground)
+- **Autenticação**:
+  - `POST /auth/register` - Registrar usuário
+  - `POST /auth/login` - Login e obtenção de token JWT
+- **CRM**:
+  - `GET /crm/customers` - Listar clientes
+  - `POST /crm/customers` - Criar cliente
+- **Financeiro**:
+  - `GET /financial/transactions` - Listar transações
+  - `POST /financial/transactions` - Criar transação
+- **Relatórios**:
+  - `POST /reports/generate` - Gerar relatório
 
-## Stay in touch
+## Executando Testes
+- **Testes Unitários**:
+  ```bash
+  npm test
+  ```
+- **Testes de Integração**:
+  ```bash
+  npm test:e2e
+  ```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Documentação
+- Acesse a documentação Swagger em `http://localhost:3000/api`.
+- Explore a API GraphQL em `http://localhost:3000/graphql`.
 
-## License
+## Estrutura do Projeto
+- **/src/auth**: Módulo de autenticação com JWT.
+- **/src/crm**: Módulo de gestão de clientes.
+- **/src/financial**: Módulo de gestão financeira.
+- **/src/reports**: Módulo de relatórios avançados.
+- **/src/graphql**: Schemas e resolvers para GraphQL.
+- **/prisma**: Configuração do Prisma e schema do banco.
+- **/test**: Testes unitários e de integração.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
